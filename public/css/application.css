@@ -8,11 +8,11 @@ p {
   text-align: center;
 }
 
-h3 {
-  color: white;
+article > h3 {
+  color: black;
 }
 
-li {
+nav {
   color: white;
 }
 
