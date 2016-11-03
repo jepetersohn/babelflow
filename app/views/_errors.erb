@@ -1,3 +1,7 @@
+<% if @message %>
+  <%= @message %>
+<% end %>
+<br>
 <% if @errors %>
   <% @errors.full_messages.each do |error| %>
     <ul>

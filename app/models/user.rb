@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
   validates :username, :email, uniqueness: true, presence: true
   validate :validate_password_length
 
+  def password=(new_password)
+    @raw_password = new_password
+    password = BCrypt::Password.create(new_password)
+    self.hashed_password = password
+  end
 
   def validate_password_length
     if @raw_password.nil?
@@ -16,18 +21,14 @@ class User < ActiveRecord::Base
     end
   end
 
+
+
   def password
     @password ||= BCrypt::Password.new(hashed_password)
   end
 
-  def password=(new_password)
-    @raw_password = new_password
-    password = BCrypt::Password.create(new_password)
-    self.hashed_password = password
-  end
-
-  def authenticate(email, password)
-    self.password == password && self.email == email
+  def authenticate(args)
+    self.password == args[:password] && self.email == args[:email]
   end
 
 end
