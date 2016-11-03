@@ -1,0 +1,6 @@
+<article>
+  <h2>Title: <%= @question.title %></h2>
+  <summary>asked by: <i><%= @question.author.username %></i> at <%= @question.created_at.to_time %></summary>
+  <p><%= @question.body %></p>
+
+
