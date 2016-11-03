@@ -1,6 +1,5 @@
-<% if @errors %>
-  <%= _errors.erb %>
-<% end %>
+<%= erb(:_errors) %>
+
 <form id="registration" method="POST" action="/users">
   <label for="username">Username:</label>
   <input type="text" name="user[username]"/>
