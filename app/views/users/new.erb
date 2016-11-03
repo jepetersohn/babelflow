@@ -1,6 +1,10 @@
 <%= erb(:_errors) %>
-<br>
-<form id="login" method="POST" action="/sessions">
+
+<form id="registration" method="POST" action="/users">
+  <label for="username">Username:</label>
+  <input type="text" name="user[username]"/>
+  <br>
+  <br>
   <label for="email">Email:</label>
   <input type="text" name="user[email]"/>
   <br>
@@ -9,5 +13,5 @@
   <input type="password" name="user[password]">
   <br>
   <br>
-  <input type="submit" value="Login"/>
+  <input type="submit" value="Register"/>
 </form>
