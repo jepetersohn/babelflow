@@ -35,3 +35,23 @@ end
 delete '/questions/:id' do
   #check cookie!
 end
+
+post '/questions/:id/answers' do
+  if logged_in?
+    @responder = User.find_by(id: session[:user_id])
+    if Question.find_by(id: params[:id]).author == @responder
+      status 403
+    else
+      answer = Answer.new(question_id: params[:id],
+                          responder: @responder,
+                          body: params[:body])
+      if answer.save
+        redirect "/questions/#{params[:id]}"
+      else
+        status 500
+      end
+    end
+  else
+    status 403
+  end
+end
