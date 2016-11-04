@@ -3,7 +3,7 @@ $(document).ready(function() {
   handleQuestionVote();
   // handleLoggingOut();
   addCommentToQuestions();
-  // addCommentToAnswers();
+  addCommentToAnswers();
 });
 
 
@@ -77,32 +77,32 @@ var addCommentToQuestions = function() {
       data: data
     })
     .done(function(response) {
-      console.log(response);
       listToAppend.append(response);
     })
     .fail(function() {
-      alert("Comment failed. Did you enter in a blank value?");
+      alert("Comment failed. Did you enter a blank value?");
     });
+    form.trigger('reset');
   });
 };
 
-// var addCommentToAnswers = function() {
-//   $("#new-comment-form").on("click", function(event) {
-//     event.preventDefault();
-//     var form = $("#new-comment-form");
-//     var listToAppend = $("#answer-comment-list");
-//     var data = form.serializeArray();
-//     $.ajax({
-//       url: '/comments',
-//       type: 'POST',
-//       data: data
-//     })
-//     .done(function(response) {
-//       listToAppend.append(response);
-//     })
-//     .fail(function() {
-//       alert("Comment failed. Why the hell did you try to enter a blank value?");
-//     });
-
-//   });
-// };
+var addCommentToAnswers = function() {
+  $("form#Answer.new-comment-form").on("submit", function(event) {
+    event.preventDefault();
+    var form = $("form#Answer.new-comment-form");
+    var listToAppend = $("#answer-comment-list");
+    var data = form.serializeArray();
+    $.ajax({
+      url: '/comments',
+      type: 'POST',
+      data: data
+    })
+    .done(function(response) {
+      listToAppend.append(response);
+    })
+    .fail(function() {
+      alert("Comment failed. Did you enter a blank value?");
+    });
+    form.trigger('reset');
+  });
+};
