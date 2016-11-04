@@ -12,10 +12,14 @@ post '/questions' do
     @author = current_user
     @question = Question.new(params[:question])
     @question.author = @author
-    if @question.save #request.xhr?
-      redirect "/questions/#{@question.id}"
-    else
-      status 500
+    if request.xhr?
+      if @question.save
+      # redirect "/questions/#{@question.id}"
+      # @question
+        erb :'questions/index'
+      else
+        status 500
+      end
     end
   else
     status 403

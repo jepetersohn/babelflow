@@ -19,7 +19,7 @@
 <% if logged_in? %>
   <div>
   <h3>Ask a question to the Babelflow community</h3>
-  <form action="/questions" method="POST">
+  <form id = "question-post-form" action="/questions" method="POST">
     <label for="question-title">Title:</label>
     <input type="text" name="question[title]"/>
     <br>
