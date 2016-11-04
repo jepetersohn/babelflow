@@ -8,8 +8,15 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  if session[:user_id]
-    ":)"
+  if logged_in?
+    @author = current_user
+    @question = Question.new(params[:question])
+    @question.author = @author
+    if @question.save #request.xhr?
+      redirect "/questions/#{@question.id}"
+    else
+      status 500
+    end
   else
     status 403
   end
