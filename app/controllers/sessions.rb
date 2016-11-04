@@ -24,6 +24,11 @@ end
 put '/sessions/:id' do
   # update a specific sessions
 end
-delete '/sessions/:id' do
-  #delete a specific sessions
+delete '/sessions' do
+  if request.xhr?
+    session[:user_id] = nil
+  else
+    session.delete(:user_id)
+    redirect '/'
+  end
 end
