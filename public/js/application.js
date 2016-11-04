@@ -63,3 +63,11 @@ function handleQuestionVote(){
 //  });
 // };
 
+var handleAnswerAdd = function() {
+  $("#comment-post-form").on("click", function(event) {
+    event.preventDefault();
+    var form = $("#comment-post-form");
+
+  });
+};
+

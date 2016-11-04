@@ -1,4 +1,4 @@
-post '/questions/:id/comments' do
+post '/' do
   if logged_in?
     @comment = Comment.new(user_id: current_user.id, commentable_id: params[:id], commentable_type: "Question", body: params[:comment] )
     if @comment.save

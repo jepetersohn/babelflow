@@ -1,7 +1,10 @@
 <div>
   <form action="/questions/<%= @question.id %>/comments" method="post">
     <label for="comment">Comment:</label>
-    <input type="textfield" name="comment">
-    <button>Comment</button>
+    <input type="textfield" name="comment[body]">
+    <input type="hidden" name="comment[commentable_id]" value="<%= commentable_id %>">
+    <input type="hidden" name="comment[commentable_type]" value="<%= commentable_type %>">
+
+    <button class="button" "comment_button">Comment</button>
   </form>
 </div>

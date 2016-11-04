@@ -20,11 +20,10 @@
   <summary>asked by: <i><%= @question.author.username %></i> at <%= @question.created_at.to_time %></summary>
   <p><%= @question.body %></p>
 <%if logged_in?%>
-  <button class="button" "comment_button">Comment</button>
   <br>
-    <form id="comment_form">
-  <button type="button" class="button" "answer_button">Answer</button>
-  </form>
+  <% commentable_type = 'Question' %>
+  <% commentable_id = @question.id %>
+  <%= erb :'comments/new_comment_form', layout: false, locals: {commentable_type: }%>
 <%end%>
 <h3>Answers</h3>
 <% if @question.answers.any? %>
