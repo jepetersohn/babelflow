@@ -15,7 +15,8 @@ function handleQuestionVote(){
       data: {vote: vote_value}
     })
     .done(function(response) {
-      $form.closest('.question-votes').children('#score').text(response);
+      var new_value = 'Vote score:' + ' ' + response
+      $form.closest('.question-votes').children('#score').text(new_value);
     });
   });
 };
