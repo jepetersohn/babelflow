@@ -10,11 +10,10 @@
   <title></title>
 </head>
 <body>
-<div class="nav">
+<div class="nav" "logged_in_nav">
   <ul>
   <li><a class="active" href="/questions">View all questions</a></li>
   <% if logged_in?%>
-  <div class="logged_in_nav">
     <li>
       <form action="/sessions" class="logout" method="POST">
         <input type="hidden" name="_method" value="DELETE">
