@@ -12,8 +12,9 @@ article > h3 {
   color: black;
 }
 
-nav {
+.nav {
   color: white;
+  position: fixed;
 }
 
 .container {
@@ -30,7 +31,7 @@ nav {
 
 }
 
-nav {
+.nav {
   width: 100%;
   height: 40px;
   font-weight: bold;
@@ -46,9 +47,14 @@ nav .brand, nav .brand a {
 }
 
 nav ul {
-  display: inline-block;
-  width: 30%;
-  text-align: right;
+  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 nav li {
@@ -170,4 +176,36 @@ button:hover {
 
 .submit:hover {
     background-color: grey;
+}
+
+
+.language-image {
+  background: black url("http://static.wixstatic.com/media/5e66a609c8a24e869c590c538aac2641.jpg_srz_738_304_85_22_0.50_1.20_0.00_jpg_srz") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.hero {
+  height: 80vh;
+  max-height: 300px;
+}
+
+.hero-heading {
+  font-size: 8em;
+  color: white;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-centered {
+  align-items: center;
+  justify-content: center;
+}
+
+.fancy-text {
+  font-family: 'Lobster Two', cursive;
 }
