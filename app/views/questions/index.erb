@@ -1,0 +1,5 @@
+<ol>
+<% @questions.each do |question| %>
+  <li><a href="/questions/<%= question.id %>"><%= question.title %></a> (<%= question.answers.count %> answers, <%= question.comments.count %> comments)</li>
+<% end %>
+</ol>
