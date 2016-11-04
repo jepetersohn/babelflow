@@ -4,6 +4,7 @@ $(document).ready(function() {
   // handleLoggingOut();
 });
 
+
 var addQuestionHandler = function() {
   $("#question-post-form").on("submit", function(event) {
     event.preventDefault();
@@ -61,3 +62,4 @@ function handleQuestionVote(){
 //   })
 //  });
 // };
+
