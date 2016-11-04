@@ -1,8 +1,9 @@
 <article>
 <div class='question-votes'>
     <form method="POST", action="/questions/<%= @question.id %>/votes" class="vote">
-      <button id="upvote" type="submit" name="vote" value="1">up vote</button>
-    </form>
+      <button id="upvote" type="submit" name="vote" value="1"><font color='"#000000"'>&#9650;</font>
+    </form></button>
+
     <br>
     <br>
      <div id="score">Vote score: <%= @question.votes.pluck(:vote).sum %>
@@ -10,7 +11,8 @@
     <br>
     <br>
     <form method="POST", action="/questions/<%= @question.id %>/votes" class="vote">
-      <button id="downvote" type="submit" name="vote" value="-1">down vote</button>
+      <button id="downvote" type="submit" name="vote" value="-1"><font color='"#000000"'>&#9660;</font></button>
+
     </form>
   </div>
   <h2>Title: <%= @question.title %></h2>
