@@ -11,10 +11,11 @@ post '/questions' do
   if logged_in?
     @author = current_user
     @question = Question.new(params[:question])
-    if request.xhr?
-      ":)"
+    @question.author = author
+    if @question.save #request.xhr?
+      redirect "/questions/#{@question.id}"
     else
-      status 403
+      status 500
     end
   else
     status 403
