@@ -5,7 +5,7 @@ helpers do
   end
 
   def current_user
-    @cached_user ||= User.find(session[:user_id]) if logged_in?
+    @cached_user ||= User.find_by(id: session[:user_id]) if logged_in?
   end
 
   # def authenticate_logged_in
