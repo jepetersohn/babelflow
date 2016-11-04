@@ -16,3 +16,17 @@
   <br>
 <% end %>
 </ol>
+<div>
+  <h3>Ask a question to the Babelflow community</h3>
+  <form action="/questions" method="POST">
+    <label for="question-title">Title:</label>
+    <br>
+    <input type="text" name="question[title]"/>
+    <br>
+    <label for="question-body">Body:</label>
+    <input type="textfield" name="question[body]"/>
+    <% if logged_in? %>
+      <input type="submit" value="Submit question">
+    <% end %>
+  </form>
+</div>
