@@ -11,7 +11,7 @@ post '/questions' do
   if logged_in?
     @author = current_user
     @question = Question.new(params[:question])
-    @question.author = author
+    @question.author = @author
     if @question.save #request.xhr?
       redirect "/questions/#{@question.id}"
     else
