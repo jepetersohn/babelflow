@@ -3,7 +3,7 @@ $(document).ready(function() {
   handleQuestionVote();
   // handleLoggingOut();
   addCommentToQuestions();
-  addCommentToAnswers();
+  // addCommentToAnswers();
 });
 
 
@@ -66,9 +66,9 @@ function handleQuestionVote(){
 // };
 
 var addCommentToQuestions = function() {
-  $("#new-comment-form").on("click", function(event) {
+  $("form#Question.new-comment-form").on("submit", function(event) {
     event.preventDefault();
-    var form = $("#new-comment-form");
+    var form = $("form#Question.new-comment-form");
     var listToAppend = $("#question-comment-list");
     var data = form.serializeArray();
     $.ajax({
@@ -77,6 +77,7 @@ var addCommentToQuestions = function() {
       data: data
     })
     .done(function(response) {
+      console.log(response);
       listToAppend.append(response);
     })
     .fail(function() {
@@ -85,5 +86,23 @@ var addCommentToQuestions = function() {
   });
 };
 
+// var addCommentToAnswers = function() {
+//   $("#new-comment-form").on("click", function(event) {
+//     event.preventDefault();
+//     var form = $("#new-comment-form");
+//     var listToAppend = $("#answer-comment-list");
+//     var data = form.serializeArray();
+//     $.ajax({
+//       url: '/comments',
+//       type: 'POST',
+//       data: data
+//     })
+//     .done(function(response) {
+//       listToAppend.append(response);
+//     })
+//     .fail(function() {
+//       alert("Comment failed. Why the hell did you try to enter a blank value?");
+//     });
 
-
+//   });
+// };

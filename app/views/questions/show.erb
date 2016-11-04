@@ -22,7 +22,7 @@
   <% if @question.comments.any? %>
     <ol id="question-comment-list">
     <% @question.comments.each do |comment| %>
-      <%= erb :'comments/comment', layout: false, locals: {comment: comment} %>
+      <%= erb :'comments/comment', {layout: false, locals: {comment: comment} } %>
     <% end %>
     </ol>
   <% end %>
