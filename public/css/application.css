@@ -19,11 +19,10 @@ article > h3 {
 
 .container {
   margin: 20px auto;
-  margin-left: 100px;
-  margin-bottom: 100px;
-  width: 700px;
-  height: 430px;
+  width: 600px;
   padding: 0px 20px 20px 20px;
+  /*border: 1px dotted black;*/
+
 }
 
 .container h1 {
@@ -126,7 +125,7 @@ div.nav li a:hover {
 
 
 
-button {
+.button {
     background-color: black;
     border: none;
     color: white;
@@ -209,3 +208,30 @@ button:hover {
 .fancy-text {
   font-family: 'Lobster Two', cursive;
 }
+
+#upvote, #downvote {
+  background-color: transparent;
+  border: none;
+  padding-top: 5px;
+  color: black;
+  vertical-align: sub;
+  padding: 1px 0px 0px 0px;
+}
+
+#downvote:hover {
+  color: grey;
+}
+
+#downvote:focus {
+  color: #0dbc3e;
+}
+
+#upvote:hover {
+  color: grey;
+}
+
+#upvote:focus {
+  color: #0dbc3e;
+}
+
+
