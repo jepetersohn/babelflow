@@ -2,10 +2,13 @@
   <h2>Title: <%= @question.title %></h2>
   <summary>asked by: <i><%= @question.author.username %></i> at <%= @question.created_at.to_time %></summary>
   <p><%= @question.body %></p>
+<%if logged_in?%>
   <button type="button" class="comment_button">Comment</button>
   <br>
     <form id="comment_form">
   <button type="button" class="answer_button">Answer</button>
+  </form>
+<%end%>
 <h3>Answers</h3>
 <% if @question.answers.any? %>
   <ol>
@@ -13,6 +16,9 @@
       <%= erb(:'answers/show', locals: {answer: answer }, layout: false )  %>
     <% end %>
   </ol>
+<% end %>
+<% if logged_in? %>
+  <%= erb :'answers/new', layout: false %>
 <% end %>
 </article>
 
