@@ -1,4 +1,4 @@
-<ol>
+<ol id="question-list">
 <% @questions.each do |question| %>
   <li><a href="/questions/<%= question.id %>"><%= question.title %></a> (<%= question.answers.count %>
     <%if question.answers.count == 1%>
@@ -16,17 +16,16 @@
   <br>
 <% end %>
 </ol>
-<div>
+<% if logged_in? %>
+  <div>
   <h3>Ask a question to the Babelflow community</h3>
   <form action="/questions" method="POST">
     <label for="question-title">Title:</label>
-    <br>
     <input type="text" name="question[title]"/>
     <br>
     <label for="question-body">Body:</label>
-    <input type="textfield" name="question[body]"/>
-    <% if logged_in? %>
+    <textarea name="question[body]"></textarea>
       <input type="submit" value="Submit question">
-    <% end %>
-  </form>
-</div>
+    </form>
+  </div>
+<% end %>
