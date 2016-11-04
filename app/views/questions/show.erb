@@ -1,12 +1,26 @@
 <article>
+<div class='question-votes'>
+    <form method="POST", action="/questions/<%= @question.id %>/votes" class="vote">
+      <button id="upvote" type="submit" name="vote" value="1">up vote</button>
+    </form>
+    <br>
+    <br>
+     <div id="score">Vote score: <%= @question.votes.pluck(:vote).sum %>
+     </div>
+    <br>
+    <br>
+    <form method="POST", action="/questions/<%= @question.id %>/votes" class="vote">
+      <button id="downvote" type="submit" name="vote" value="-1">down vote</button>
+    </form>
+  </div>
   <h2>Title: <%= @question.title %></h2>
   <summary>asked by: <i><%= @question.author.username %></i> at <%= @question.created_at.to_time %></summary>
   <p><%= @question.body %></p>
 <%if logged_in?%>
-  <button type="button" class="comment_button">Comment</button>
+  <button class="button" "comment_button">Comment</button>
   <br>
     <form id="comment_form">
-  <button type="button" class="answer_button">Answer</button>
+  <button type="button" class="button" "answer_button">Answer</button>
   </form>
 <%end%>
 <h3>Answers</h3>
