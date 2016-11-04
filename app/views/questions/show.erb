@@ -6,6 +6,14 @@
   <br>
     <form id="comment_form">
   <button type="button" class="answer_button">Answer</button>
+<h3>Answers</h3>
+<% if @question.answers.any? %>
+  <ol>
+    <% @question.answers.each do |answer| %>
+      <%= erb(:'answers/show', locals: {answer: answer }, layout: false )  %>
+    <% end %>
+  </ol>
+<% end %>
 </article>
 
 
