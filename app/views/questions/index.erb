@@ -4,26 +4,13 @@
 <br>
 <ol id="question-list">
 <% @questions.each do |question| %>
-  <li><a href="/questions/<%= question.id %>"><%= question.title %></a> (<%= question.answers.count %>
-    <%if question.answers.count == 1%>
-      answer,
-    <% else %>
-      answers,
-    <%end%>
-    <%= question.comments.count %>
-    <%if question.comments.count == 1%>
-      comment)
-    <%else%>
-    comments)
-    <%end%>
-  </li>
-  <br>
+ <%= erb :"questions/_questions", locals: {question: question} %>
 <% end %>
 </ol>
 <% if logged_in? %>
   <div>
   <h3>Ask a question to the Babelflow community</h3>
-  <form action="/questions" method="POST">
+  <form id = "question-post-form" action="/questions" method="POST">
     <label for="question-title">Title:</label>
     <input type="text" name="question[title]"/>
     <br>
