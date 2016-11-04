@@ -8,8 +8,14 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  if session[:user_id]
-    ":)"
+  if logged_in?
+    @author = current_user
+    @question = Question.new(params[:question])
+    if request.xhr?
+      ":)"
+    else
+      status 403
+    end
   else
     status 403
   end
