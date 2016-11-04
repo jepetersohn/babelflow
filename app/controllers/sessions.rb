@@ -12,11 +12,11 @@ post '/sessions' do
       session[:user_id] = @user.id
       redirect "/questions"
     else
-      @message = "Invalid password"
+      @message = "Invalid username or password"
       erb :'sessions/new'
     end
   else
-    @message = "Invalid username"
+    @message = "Invalid username or password"
     erb :'sessions/new'
   end
 end
