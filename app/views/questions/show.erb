@@ -1,8 +1,8 @@
 <article>
 <div class='question-votes'>
     <form method="POST", action="/questions/<%= @question.id %>/votes" class="vote">
-      <button id="upvote" type="submit" name="vote" value="1"><font color='"#000000"'>&#9650;</font>
-    </form></button>
+      <button id="upvote" type="submit" name="vote" value="1"><font color='"#000000"'>&#9650;</font></button>
+    </form>
 
     <br>
     <br>
@@ -19,15 +19,22 @@
   <hr>
   <summary>asked by: <i><%= @question.author.username %></i> at <%= @question.created_at.to_time %></summary>
   <p><%= @question.body %></p>
+  <% if @question.comments.any? %>
+    <ol id="question-comment-list">
+    <% @question.comments.each do |comment| %>
+      <li><%= comment.body  %></li>
+    <% end %>
+    </ol>
+  <% end %>
 <%if logged_in?%>
   <br>
   <% commentable_type = 'Question' %>
   <% commentable_id = @question.id %>
-  <%= erb :'comments/new_comment_form', layout: false, locals: {commentable_type: }%>
+  <%= erb :'comments/new_comment_form', layout: false, locals: {commentable_type: commentable_type, commentable_id: commentable_id }%>
 <%end%>
 <h3>Answers</h3>
 <% if @question.answers.any? %>
-  <ol>
+  <ol id="answer-comment-list">
     <% @question.answers.each do |answer| %>
       <%= erb(:'answers/show', locals: {answer: answer }, layout: false )  %>
     <% end %>

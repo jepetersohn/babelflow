@@ -2,6 +2,8 @@ $(document).ready(function() {
   addQuestionHandler();
   handleQuestionVote();
   // handleLoggingOut();
+  addCommentToQuestions();
+  addCommentToAnswers();
 });
 
 
@@ -63,11 +65,23 @@ function handleQuestionVote(){
 //  });
 // };
 
-var handleAnswerAdd = function() {
-  $("#comment-post-form").on("click", function(event) {
+var addCommentToQuestions = function() {
+  $("#new-comment-form").on("click", function(event) {
     event.preventDefault();
-    var form = $("#comment-post-form");
-
+    var form = $("#new-comment-form");
+    var listToAppend = $("#question-comment-list");
+    var data = form.serializeArray();
+    $.ajax({
+      url: '/comments',
+      type: 'POST',
+      data: data
+    })
+    .done(function(response) {
+      listToAppend.append(response);
+    })
+    .fail(function() {
+      alert("Comment failed. Did you enter in a blank value?");
+    });
   });
 };
 

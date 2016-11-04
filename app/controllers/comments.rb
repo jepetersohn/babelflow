@@ -1,10 +1,23 @@
-post '/' do
+post '/comments' do
   if logged_in?
-    @comment = Comment.new(user_id: current_user.id, commentable_id: params[:id], commentable_type: "Question", body: params[:comment] )
-    if @comment.save
-      redirect "/questions/#{params[:id]}"
+    @comment = Comment.new(params[:comment])
+    @comment.author_id = current_user.id
+    if request.xhr?
+      status 204
+      if @comment.save
+        # redirect "/questions/#{params[:id]}"
+        case params[:comment][:commentable_type]
+        when "Answer"
+          erb :''
+
+        when "Question"
+
+        end
+      else
+        status 500
+      end
     end
   else
-    "Sorry, you may not comment without first logging in."
+    status 403
   end
 end

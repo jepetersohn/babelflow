@@ -1,9 +1,9 @@
 <li id="<%= answer.id %>" <%= if answer.best; "style='color: red'"; end %>><%= answer.body %> -<%= answer.responder.username %>
 </li>
 <br>
-  <% commentable_type = 'Answer' %>
-  <% commentable_id = answer.id %>
-<%= erb :'comments/new_comment_form', layout: false %>
+<% commentable_type = 'Answer' %>
+<% commentable_id = answer.id %>
+<%= erb :'comments/new_comment_form', layout: false, locals: { commentable_type: commentable_type, commentable_id: commentable_id} %>
 <br>
 <hr>
 <br>
