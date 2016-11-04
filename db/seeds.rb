@@ -3,7 +3,7 @@ require 'faker'
 30.times do
   User.create!(username: Faker::Internet.user_name,
     email: Faker::Internet.email,
-    hashed_password: "password")
+    password: "password")
 end
 
 japanese_question = Question.create!(title:"会者定離", body:"この4字熟語ってどう思うんですか", author_id:2)
