@@ -7,6 +7,7 @@
   <br>
     <form id="comment_form">
   <button type="button" class="answer_button">Answer</button>
+  </form>
 <%end%>
 <h3>Answers</h3>
 <% if @question.answers.any? %>
@@ -15,6 +16,9 @@
       <%= erb(:'answers/show', locals: {answer: answer }, layout: false )  %>
     <% end %>
   </ol>
+<% end %>
+<% if logged_in? %>
+  <%= erb :'answers/new', layout: false %>
 <% end %>
 </article>
 
