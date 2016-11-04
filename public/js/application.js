@@ -1,7 +1,20 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  handleLoggingOut();
 });
+
+function handleLoggingOut() {
+  $('.logout').on('click', function(event) {
+  event.preventDefault();
+ var logoutUrl = $(this).attr('action');
+  var request = $.ajax({
+    method: "DELETE",
+    url: logoutUrl
+  })
+  request.done(function() {
+    $(".logged_in_nav").remove();
+    $(".not_logged_in_nav").add();
+    //also tried show/hide. same results.
+    //also need to account for what to do about logging out on a page other than the main page...like, hiding the comment/answer buttons etc
+  })
+ });
+};

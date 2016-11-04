@@ -14,16 +14,20 @@
   <ul>
   <li><a class="active" href="/questions">View all questions</a></li>
   <% if logged_in?%>
+  <div class="logged_in_nav">
     <li>
-      <form action="/sessions" method="POST">
+      <form action="/sessions" class="logout" method="POST">
         <input type="hidden" name="_method" value="DELETE">
         <input id="logout" type="submit" value="logout">
       </form>
     </li>
     <li><a href="/users/<%=current_user.id%>">View your questions</a></li>
+  </div>
   <%else%>
+  <div class="not_logged_in_nav">
     <li><a href="/users/new">Register</a></li>
     <li><a href="/sessions/new">Login</a></li>
+  </div>
   <%end%>
   </ul>
 </div>
