@@ -7,14 +7,20 @@ end
 
 post '/sessions' do
   @user = User.find_by(email: params[:user][:email])
-  if @user && User.authenticate(params[:user])
-    session[:user_id] = @user.id
-    redirect "/questions"
+  if @user
+    if @user.authenticate(params[:user])
+      session[:user_id] = @user.id
+      redirect "/questions"
+    else
+      @message = "Invalid password"
+      erb :'sessions/new'
+    end
   else
-    @message = "Invalid username or password"
+    @message = "Invalid username"
     erb :'sessions/new'
   end
 end
+
 get '/sessions/:id' do
   #display a specific article sessions
 end
