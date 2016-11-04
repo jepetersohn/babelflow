@@ -1,3 +1,6 @@
+<br>
+<h2>Questions:</h2>
+<br>
 <ol id="question-list">
 <% @questions.each do |question| %>
   <li><a href="/questions/<%= question.id %>"><%= question.title %></a> (<%= question.answers.count %>
