@@ -22,7 +22,7 @@
   <% if @question.comments.any? %>
     <ol id="question-comment-list">
     <% @question.comments.each do |comment| %>
-      <li><%= comment.body  %></li>
+      <%= erb :'comments/comment', layout: false, locals: {comment: comment} %>
     <% end %>
     </ol>
   <% end %>
@@ -30,11 +30,11 @@
   <br>
   <% commentable_type = 'Question' %>
   <% commentable_id = @question.id %>
-  <%= erb :'comments/new_comment_form', layout: false, locals: {commentable_type: commentable_type, commentable_id: commentable_id }%>
+  <%= erb :'comments/new_comment_form', {layout: false, locals: {commentable_type: commentable_type, commentable_id: commentable_id } }%>
 <%end%>
 <h3>Answers</h3>
 <% if @question.answers.any? %>
-  <ol id="answer-comment-list">
+  <ol>
     <% @question.answers.each do |answer| %>
       <%= erb(:'answers/show', locals: {answer: answer }, layout: false )  %>
     <% end %>

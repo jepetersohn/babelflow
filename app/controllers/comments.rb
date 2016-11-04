@@ -5,14 +5,7 @@ post '/comments' do
     if request.xhr?
       status 204
       if @comment.save
-        # redirect "/questions/#{params[:id]}"
-        case params[:comment][:commentable_type]
-        when "Answer"
-          erb :''
-
-        when "Question"
-
-        end
+        erb :'comments/comment'
       else
         status 500
       end
