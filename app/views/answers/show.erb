@@ -1,7 +1,16 @@
 <li id="<%= answer.id %>" <%= if answer.best; "style='color: red'"; end %>><%= answer.body %> -<%= answer.responder.username %>
 </li>
 <br>
-<button class="button" "comment_button"="">Comment</button>
+<% commentable_type = 'Answer' %>
+<% commentable_id = answer.id %>
+<%= erb :'comments/new_comment_form', layout: false, locals: { commentable_type: commentable_type, commentable_id: commentable_id} %>
+<% if answer.comments.any? %>
+    <ol id="answer-comment-list">
+    <% answer.comments.each do |comment| %>
+      <%= erb :'comments/comment', {layout: false, locals: {comment: comment} } %>
+    <% end %>
+    </ol>
+<% end %>
 <br>
 <div class='answer-votes'>
     <form method="POST", action="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes" class="vote">

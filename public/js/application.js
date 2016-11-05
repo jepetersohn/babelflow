@@ -3,6 +3,8 @@ $(document).ready(function() {
   handleQuestionVote();
   handleAnswerVote();
   // handleLoggingOut();
+  addCommentToQuestions();
+  addCommentToAnswers();
 });
 
 
@@ -82,3 +84,44 @@ function handleAnswerVote(){
 //  });
 // };
 
+var addCommentToQuestions = function() {
+  $("form#Question.new-comment-form").on("submit", function(event) {
+    event.preventDefault();
+    var form = $("form#Question.new-comment-form");
+    var listToAppend = $("#question-comment-list");
+    var data = form.serializeArray();
+    $.ajax({
+      url: '/comments',
+      type: 'POST',
+      data: data
+    })
+    .done(function(response) {
+      listToAppend.append(response);
+    })
+    .fail(function() {
+      alert("Comment failed. Did you enter a blank value?");
+    });
+    form.trigger('reset');
+  });
+};
+
+var addCommentToAnswers = function() {
+  $("form#Answer.new-comment-form").on("submit", function(event) {
+    event.preventDefault();
+    var form = $("form#Answer.new-comment-form");
+    var listToAppend = $("#answer-comment-list");
+    var data = form.serializeArray();
+    $.ajax({
+      url: '/comments',
+      type: 'POST',
+      data: data
+    })
+    .done(function(response) {
+      listToAppend.append(response);
+    })
+    .fail(function() {
+      alert("Comment failed. Did you enter a blank value?");
+    });
+    form.trigger('reset');
+  });
+};

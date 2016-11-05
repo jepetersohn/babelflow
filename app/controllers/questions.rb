@@ -2,7 +2,7 @@ get '/questions' do
   @questions = Question.all
   erb :'questions/index'
 end
- # <%= erb :"_questions", locals: {question: question}
+
 
 get '/questions/new' do
   #not needed if we AJAX this shit
@@ -10,16 +10,11 @@ end
 
 post '/questions' do
   if logged_in?
-    # @author = current_user.id
     @question = Question.new(params[:question])
-    # @question.author = @author
     @question.author_id = current_user.id
     if request.xhr?
-      # status 204
       if @question.save
-      # redirect "/questions/#{@question.id}"
         erb :'questions/_questions', layout: false, locals: {question: @question}
-        # erb :'questions/index'
       else
         status 500
       end
