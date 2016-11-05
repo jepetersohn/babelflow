@@ -12,7 +12,7 @@ german_question = Question.create!(title: "Hast du Hunger?", body: "Was ist dein
 
 Comment.create!(body: "Pues, me choca el queso; entonces no quiero el queso para nada. De la pregunta sobre el hambre, claro que sí.", author: User.find(rand(1..User.all.length)), commentable: german_question)
 
-Answer.create!(body:"日本でうまいチーズないからあんまりチーズ食べないけど。。。", best: true, question_id:german_question.id, responder:User.find(rand(1..User.all.length)))
+Answer.create!(body:"日本でうまいチーズないからあんまりチーズ食べないけど。。。", question_id:german_question.id, responder:User.find(rand(1..User.all.length)))
 
 latin_answer = Answer.create!(body: "Nihil aeternam est", responder: User.find(rand(1..User.all.length)), question: japanese_question)
 

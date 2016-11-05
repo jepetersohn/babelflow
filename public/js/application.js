@@ -29,7 +29,7 @@ var addQuestionHandler = function() {
 };
 
 function handleQuestionVote(){
-  $('.vote').on("submit", function(event) {
+  $('.question-votes > .vote').on("submit", function(event) {
     event.preventDefault();
     var url = $(this).attr('action');
     var vote_value = $(this).children('button').attr('value');
@@ -47,7 +47,7 @@ function handleQuestionVote(){
 };
 
 function handleAnswerVote(){
-  $('.vote').on("submit", function(event) {
+  $('.answer-votes > .vote').on("submit", function(event) {
     event.preventDefault();
     var url = $(this).attr('action');
     var vote_value = $(this).children('button').attr('value');
