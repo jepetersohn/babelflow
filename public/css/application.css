@@ -238,4 +238,30 @@ button:hover {
   color: #0dbc3e;
 }
 
+#score {
+  margin-left: -200px;
+  width: 130px;
+  position: absolute;
+}
 
+#score-comment {
+  vertical-align: right;
+  right: -400px;
+  top: -50px;
+  width: 130px;
+  position: relative;
+}
+
+.question-line {
+  width: 120%;
+  position: center;
+}
+
+.title {
+  padding-bottom: 2px;
+  border-bottom: solid 2px;
+}
+
+.show-answer {
+  width: 300px;
+}
