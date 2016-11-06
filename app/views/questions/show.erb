@@ -1,12 +1,11 @@
 <article>
+<h2 class="title">Title: <%= @question.title %></h2>
 <div class='question-votes'>
     <form method="POST", action="/questions/<%= @question.id %>/votes" class="vote">
-      <button id="upvote" type="submit" name="vote" value="1"><font color='"#000000"'>&#9650;</font></button>
-    </form>
-
+      <button id="upvote" type="submit" name="vote" value="1"><font color='"#000000"'>&#9650;</font></form></button>
     <br>
     <br>
-     <div id="score">Vote score: <%= @question.votes.pluck(:vote).sum %>
+     <div id="score" "answer"><i>Vote score: <%= @question.votes.pluck(:vote).sum %></i>
      </div>
     <br>
     <form method="POST", action="/questions/<%= @question.id %>/votes" class="vote">
@@ -14,7 +13,6 @@
 
     </form>
   </div>
-  <h2>Title: <%= @question.title %></h2>
   <hr>
   <summary>asked by: <i><%= @question.author.username %></i> at <%= @question.created_at.to_time %></summary>
   <p><%= @question.body %></p>
@@ -36,6 +34,7 @@
   <ol>
     <% @question.answers.each do |answer| %>
       <%= erb(:'answers/show', locals: {answer: answer }, layout: false )  %>
+  </div>
     <% end %>
   </ol>
 <% end %>
@@ -43,5 +42,3 @@
   <%= erb :'answers/new', layout: false %>
 <% end %>
 </article>
-
-
