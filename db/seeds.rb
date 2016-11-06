@@ -16,7 +16,7 @@ russian_question = Question.create!(title: "Мне нужен врач", body: "
 
 english_question = Question.create!(title: "Got a taste for some Italian food.", body: "Where is the best Italian restaurant?", author_id: 12 )
 
-Answer.create!(body: "Den beste italiensk restaurant finnes i Gammel by og det heter Ralph´s.", question_id = english_question.id, responder:User.find(rand(1..User.all.length)))
+Answer.create!(body: "Den beste italiensk restaurant finnes i Gammel by og det heter Ralph´s.", question_id: english_question.id, responder:User.find(rand(1..User.all.length)))
 
 Comment.create!(body: "Stop drinking so much!", author: User.find(rand(1..User.all.length)), commentable: russian_question)
 
