@@ -5,5 +5,4 @@ class Answer < ActiveRecord::Base
   has_many :votes, as: :votable
 
   validates :question, :responder, :body, { presence: true }
-  
 end
