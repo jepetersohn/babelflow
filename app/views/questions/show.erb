@@ -16,7 +16,7 @@
   </div>
   <h2>Title: <%= @question.title %></h2>
   <hr>
-  <summary>asked by: <i><%= @question.author.username %></i> at <%= @question.created_at.to_time %></summary>
+  <summary>asked by: <i><a href="/users/<%=@question.author.id%>"><%= @question.author.username %></i></a> at <%= @question.created_at.to_time %></summary>
   <p><%= @question.body %></p>
   <% if @question.comments.any? %>
     <ol id="question-comment-list">
