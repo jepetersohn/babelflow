@@ -36,7 +36,6 @@
   <ol>
     <% @question.answers.each do |answer| %>
       <%= erb(:'answers/show', locals: {answer: answer }, layout: false )  %>
-  </div>
     <% end %>
   </ol>
 <% end %>
