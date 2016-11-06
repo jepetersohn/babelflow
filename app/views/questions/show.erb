@@ -1,21 +1,24 @@
 <article>
-<h2 class="title">Title: <%= @question.title %></h2>
 <div class='question-votes'>
-    <form method="POST", action="/questions/<%= @question.id %>/votes" class="vote">
+    <div id="score" "answer"><form method="POST", action="/questions/<%= @question.id %>/votes" class="vote">
       <button id="upvote" type="submit" name="vote" value="1"><font color='"#000000"'>&#9650;</font></form></button>
     <br>
+     <i>Vote score: <%= @question.votes.pluck(:vote).sum %></i>
+
     <br>
-     <div id="score" "answer"><i>Vote score: <%= @question.votes.pluck(:vote).sum %></i>
-     </div>
     <br>
     <form method="POST", action="/questions/<%= @question.id %>/votes" class="vote">
       <button id="downvote" type="submit" name="vote" value="-1"><font color='"#000000"'>&#9660;</font></button>
 
     </form>
   </div>
-  <hr>
+  </div>
+<h2 class="title">Title: <%= @question.title %></h2>
   <summary>asked by: <i><%= @question.author.username %></i> at <%= @question.created_at.to_time %></summary>
-  <p><%= @question.body %></p>
+  <br>
+  <u><i>Question:</i></u><p><%= @question.body %></p>
+  <hr class="question-line">
+  <b>Comments:</b>
   <% if @question.comments.any? %>
     <ol id="question-comment-list">
     <% @question.comments.each do |comment| %>

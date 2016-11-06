@@ -1,9 +1,25 @@
-<li id="<%= answer.id %>"><%= answer.body %> -<%= answer.responder.username %>
-</li>
+<div class="show-answer"><li id="<%= answer.id %>"><%= answer.body %> <br><br>-<i>Answered by:</i> <%= answer.responder.username %>
+</li></div>
 <br>
 <% commentable_type = 'Answer' %>
 <% commentable_id = answer.id %>
+<div class='answer-votes'>
+  <div id="score-comment" "answer">
+    <form method="POST", action="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes" class="vote">
+      <button id="upvote" type="submit" name="vote" value="1"><font color='"#000000"'>&#9650;</font>
+    </form></button>
+
+    <br>
+     <i>Vote score:</i> <%= answer.votes.pluck(:vote).sum %>
+    <br>
+    <br>
+    <form method="POST", action="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes" class="vote">
+      <button id="downvote" type="submit" name="vote" value="-1"><font color='"#000000"'>&#9660;</font></button>
+
+    </form>
+   </div>
 <%= erb :'comments/new_comment_form', layout: false, locals: { commentable_type: commentable_type, commentable_id: commentable_id} %>
+<br>
 <% if answer.comments.any? %>
     <ol id="answer-comment-list">
     <% answer.comments.each do |comment| %>
@@ -11,19 +27,5 @@
     <% end %>
     </ol>
 <% end %>
-<br>
-<div class='answer-votes'>
-    <form method="POST", action="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes" class="vote">
-      <button id="upvote" type="submit" name="vote" value="1"><font color='"#000000"'>&#9650;</font>
-    </form></button>
-
-    <br>
-     <div id="score">Vote score: <%= answer.votes.pluck(:vote).sum %>
-     </div>
-    <br>
-    <form method="POST", action="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes" class="vote">
-      <button id="downvote" type="submit" name="vote" value="-1"><font color='"#000000"'>&#9660;</font></button>
-
-    </form>
 <hr>
 <br>
