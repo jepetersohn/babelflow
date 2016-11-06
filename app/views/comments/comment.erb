@@ -1,4 +1,4 @@
 <div class="show-answer"><li><%="#{comment.body}"%>
   <br>
   <br>
-  <i>-Commented by:</i> <%="#{comment.author.username}" %> </li></div>
+<li><%=comment.body%> Commented by:<a href="/users/<%=comment.author.id%>"> <%=comment.author.username%> </a></li></div>

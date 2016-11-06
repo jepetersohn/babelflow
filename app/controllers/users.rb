@@ -16,9 +16,11 @@ post '/users' do
     erb :"users/new"
   end
 end
-# get '/users/:id' do
-#   #display a specific article users
-# end
+
+get '/users/:id' do
+  @user = User.find(params[:id])
+  erb :"users/show"
+end
 # get '/users/:id/edit' do
 #   #return an HTML form for editing users
 # end

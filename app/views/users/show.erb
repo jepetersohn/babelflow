@@ -1,0 +1,9 @@
+<%=@user.username%>'s questions
+<hr>
+<br>
+<br>
+<%@user.questions.each do |question|%>
+<ol>
+  <li><a href="/questions/<%=question.id%>"><%=question.title%></a></li>
+</ol>
+<%end%>

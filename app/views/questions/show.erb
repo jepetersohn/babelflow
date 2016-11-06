@@ -14,7 +14,7 @@
   </div>
   </div>
 <h2 class="title">Title: <%= @question.title %></h2>
-  <summary>asked by: <i><%= @question.author.username %></i> at <%= @question.created_at.to_time %></summary>
+  <summary>asked by: <i><a href="/users/<%=@question.author.id%>"><%= @question.author.username %></i></a> at <%= @question.created_at.to_time %></summary>
   <br>
   <u><i>Question:</i></u><p><%= @question.body %></p>
   <hr class="question-line">

@@ -1,4 +1,4 @@
-<div class="show-answer"><li id="<%= answer.id %>"><%= answer.body %> <br><br>-<i>Answered by:</i> <%= answer.responder.username %>
+<div class="show-answer"><li id="<%= answer.id %>"><%= answer.body %> -<a href="/users/<%=answer.responder.id%>"><%= answer.responder.username %></a>
 </li></div>
 <br>
 <% commentable_type = 'Answer' %>
