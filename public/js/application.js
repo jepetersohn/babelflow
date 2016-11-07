@@ -40,7 +40,7 @@ function handleQuestionVote(){
       data: {vote: vote_value}
     })
     .done(function(response) {
-      var new_value = "<i>Vote score: " + ' ' + response + "</i>"
+      var new_value = "<i>Vote score: " + response + "</i>";
       $form.siblings('.votecount').html(new_value);
     });
   });
@@ -58,7 +58,7 @@ function handleAnswerVote(){
       data: {vote: vote_value}
     })
     .done(function(response) {
-      var new_value = "<i>Vote score: " + ' ' + response + "</i>"
+      var new_value = "<i>Vote score: </i>" + response;
       $form.siblings('.votecount').html(new_value);
     });
   });
