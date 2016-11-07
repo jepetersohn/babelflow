@@ -64,3 +64,20 @@ post '/questions/:id/answers' do
     status 403
   end
 end
+
+put '/questions/:id' do
+  @question = Question.find_by(id: params[:id])
+  if logged_in?
+    if current_user == @question.author
+      @question.best_answer_id = params[:best_answer]
+      if @question.save
+        redirect "/questions/#{params[:id]}"
+      else
+        @message = "An error occurred."
+        redirect "/questions/#{params[:id]}"
+      end
+    end
+  else
+    status 403
+  end
+end
