@@ -1,4 +1,4 @@
-<div class="show-answer"><li id="<%= answer.id %>"><%= answer.body %> -<a href="/users/<%=answer.responder.id%>"><%= answer.responder.username %></a>
+<div class="show-answer"><li id="<%= answer.id %>"><% if answer.question.best_answer_id == answer.id%><%= "BEST ANSWER: " %><% end %><%= answer.body %> -<a href="/users/<%=answer.responder.id%>"><%= answer.responder.username %></a>
 </li></div>
 <br>
 <% commentable_type = 'Answer' %>
@@ -18,6 +18,17 @@
 
     </form>
    </div>
+   <% if logged_in? %>
+    <% if (current_user == answer.question.author) && (answer.id != answer.question.best_answer_id) %>
+      <div class='mark-best-answer'>
+        <form method="post" action="/questions/<%= answer.question.id %>">
+          <input type="hidden" name="_method" value="put">
+          <input type="hidden" name="best_answer" value="<%= answer.id %>">
+          <input type="submit" name="best" value="mark best answer">
+        </form>
+      </div>
+    <% end %>
+   <% end %>
 <%= erb :'comments/new_comment_form', layout: false, locals: { commentable_type: commentable_type, commentable_id: commentable_id} %>
 <br>
 <% if answer.comments.any? %>
