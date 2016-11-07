@@ -31,12 +31,12 @@
    <% end %>
 <%= erb :'comments/new_comment_form', layout: false, locals: { commentable_type: commentable_type, commentable_id: commentable_id} %>
 <br>
+    <ol class="answer-comment-list">
 <% if answer.comments.any? %>
-    <ol id="answer-comment-list">
     <% answer.comments.each do |comment| %>
       <%= erb :'comments/comment', {layout: false, locals: {comment: comment} } %>
     <% end %>
-    </ol>
 <% end %>
+    </ol>
 <hr>
 <br>

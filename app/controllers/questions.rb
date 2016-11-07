@@ -37,9 +37,6 @@ get '/questions/:id/edit' do
   # check cookie!
 end
 
-put '/questions/:id' do
-  # check cookie!
-end
 
 delete '/questions/:id' do
   #check cookie!

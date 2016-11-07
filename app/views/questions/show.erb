@@ -19,13 +19,13 @@
   <u><i>Question:</i></u><p><%= @question.body %></p>
   <hr class="question-line">
   <b>Comments:</b>
-  <% if @question.comments.any? %>
     <ol id="question-comment-list">
+  <% if @question.comments.any? %>
     <% @question.comments.each do |comment| %>
       <%= erb :'comments/comment', {layout: false, locals: {comment: comment} } %>
     <% end %>
-    </ol>
   <% end %>
+    </ol>
 <%if logged_in?%>
   <br>
   <% commentable_type = 'Question' %>
