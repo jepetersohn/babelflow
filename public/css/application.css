@@ -265,3 +265,7 @@ button:hover {
 .show-answer {
   width: 300px;
 }
+
+.show-answer > li {
+  margin-bottom: 10px;
+}
