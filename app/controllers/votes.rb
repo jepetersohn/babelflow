@@ -36,3 +36,23 @@ post '/questions/:id/answers/:answer_id/votes' do
     end
   end
 end
+
+post '/comments/:id/votes' do
+  if logged_in?
+    @comment = Comment.find_by(id: params[:id])
+    @comment.votes.where(voter: current_user).destroy_all
+    @vote = Vote.create(votable_type: "Comment", votable_id: @comment.id, voter_id: current_user.id, vote: params[:vote])
+    if request.xhr?
+      @comment.votes.pluck(:vote).sum.to_s
+    else
+      redirect "/"
+    end
+  else
+    if request.xhr?
+      status 403
+    else
+      redirect "/"
+    end
+  end
+end
+
