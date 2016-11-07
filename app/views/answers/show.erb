@@ -10,7 +10,7 @@
     </form></button>
 
     <br>
-     <i>Vote score:</i> <%= answer.votes.pluck(:vote).sum %>
+     <span class="votecount"><i>Vote score:</i> <%= answer.votes.pluck(:vote).sum %></span>
     <br>
     <br>
     <form method="POST", action="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes" class="vote">

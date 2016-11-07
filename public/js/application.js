@@ -29,7 +29,7 @@ var addQuestionHandler = function() {
 };
 
 function handleQuestionVote(){
-  $('.question-votes > .vote').on("submit", function(event) {
+  $(".question-votes").on("submit", "form.vote", function(event) {
     event.preventDefault();
     var url = $(this).attr('action');
     var vote_value = $(this).children('button').attr('value');
@@ -40,14 +40,14 @@ function handleQuestionVote(){
       data: {vote: vote_value}
     })
     .done(function(response) {
-      var new_value = 'Vote score:' + ' ' + response
-      $form.closest('.question-votes').children('#score').text(new_value);
+      var new_value = "<i>Vote score: " + ' ' + response + "</i>"
+      $form.siblings('.votecount').html(new_value);
     });
   });
 };
 
 function handleAnswerVote(){
-  $('.answer-votes > .vote').on("submit", function(event) {
+  $(".answer-votes").on("submit", "form.vote", function(event) {
     event.preventDefault();
     var url = $(this).attr('action');
     var vote_value = $(this).children('button').attr('value');
@@ -58,8 +58,8 @@ function handleAnswerVote(){
       data: {vote: vote_value}
     })
     .done(function(response) {
-      var new_value = 'Vote score:' + ' ' + response
-      $form.closest('.answer-votes').children('#score').text(new_value);
+      var new_value = "<i>Vote score: " + ' ' + response + "</i>"
+      $form.siblings('.votecount').html(new_value);
     });
   });
 };
