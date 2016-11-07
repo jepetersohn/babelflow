@@ -10,6 +10,12 @@ post '/comments' do
       else
         status 500
       end
+    else
+      if @comment.save
+        redirect "/"
+      else
+        status 500
+      end
     end
   else
     status 403

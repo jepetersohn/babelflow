@@ -108,8 +108,9 @@ var addCommentToQuestions = function() {
 var addCommentToAnswers = function() {
   $("form#Answer.new-comment-form").on("submit", function(event) {
     event.preventDefault();
-    var form = $("form#Answer.new-comment-form");
-    var listToAppend = $("#answer-comment-list");
+    var form = $(this);
+    var listToAppend = form.closest(".answer-votes").find(".answer-comment-list");
+    console.log(listToAppend);
     var data = form.serializeArray();
     $.ajax({
       url: '/comments',
