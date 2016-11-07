@@ -2,6 +2,7 @@ $(document).ready(function() {
   addQuestionHandler();
   handleQuestionVote();
   handleAnswerVote();
+  handleCommentVote();
   // handleLoggingOut();
   addCommentToQuestions();
   addCommentToAnswers();
@@ -60,6 +61,24 @@ function handleAnswerVote(){
     .done(function(response) {
       var new_value = "<i>Vote score: </i>" + response;
       $form.siblings('.votecount').html(new_value);
+    });
+  });
+};
+
+function handleCommentVote(){
+  $("div.show-answer").on("submit", "form.comment-vote", function(event) {
+    event.preventDefault();
+    var url = $(this).attr('action');
+    var vote_value = $(this).children('button').attr('value');
+    var $form = $(this)
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: {vote: vote_value}
+    })
+    .done(function(response) {
+      var new_value = response;
+      $form.siblings(".commentcount").text(new_value);
     });
   });
 };

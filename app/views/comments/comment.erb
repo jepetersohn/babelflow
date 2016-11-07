@@ -1,2 +1,8 @@
 <div class="show-answer">
-<li><%=comment.body%> (Commented by: <a href="/users/<%=comment.author.id%>"> <%=comment.author.username%></a>)</li></div>
+<li><%=comment.body%> (Commented by: <a href="/users/<%=comment.author.id%>"> <%=comment.author.username%></a>)
+<form method="post" action="/comments/<%= comment.id %>/votes" class="comment-vote">
+<button type="submit" name="vote" value="-1">downvote</button></form>
+<span class="commentcount"><%= comment.votes.pluck(:vote).sum %></span>
+<form method="post" action="/comments/<%= comment.id %>/votes" class="comment-vote"><button type="submit" name="vote" value="1">upvote</button>
+</form>
+</li></div>
