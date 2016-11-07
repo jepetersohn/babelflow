@@ -3,7 +3,7 @@
     <div id="score" "answer"><form method="POST", action="/questions/<%= @question.id %>/votes" class="vote">
       <button id="upvote" type="submit" name="vote" value="1"><font color='"#000000"'>&#9650;</font></form></button>
     <br>
-     <i>Vote score: <%= @question.votes.pluck(:vote).sum %></i>
+     <span class="votecount"><i>Vote score: <%= @question.votes.pluck(:vote).sum %></i></span>
 
     <br>
     <br>
@@ -11,7 +11,7 @@
       <button id="downvote" type="submit" name="vote" value="-1"><font color='"#000000"'>&#9660;</font></button>
 
     </form>
-  </div>
+    </div>
   </div>
 <h2 class="title">Title: <%= @question.title %></h2>
   <summary>asked by: <i><a href="/users/<%=@question.author.id%>"><%= @question.author.username %></i></a> at <%= @question.created_at.to_time %></summary>
