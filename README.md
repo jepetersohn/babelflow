@@ -7,7 +7,7 @@
 4.  Sam 
 
 ## Summary
-DBC project completed over 4 days. We were assigned to create a Sinatra application from the ground up: a clone of the [StackOverflow](http://stackoverflow.com) functionality, with a unique theme. Our group created Babelflow, in which users are encouraged to post thematically proper responses to questions/comments in a different language than the original post. For example: A user may post a question in Spanish asking about fun places to visit in Chicago; responders are encouraged to reply to that question in any language <i>other than</i> Spanish. 
+DBC project completed over 4 days. We were assigned to create a Sinatra application from the ground up: a clone with the functionality of [StackOverflow](http://stackoverflow.com), with a unique theme invented by us. Our group created Babelflow, in which users are encouraged to post thematically proper responses to questions/comments in a different language than the original post. For example: A user may post a question in Spanish asking about fun places to visit in Chicago; responders are encouraged to reply to that question in any language <i>other than</i> Spanish. 
 
 ### Assignment Requirement per DBC
 - Users can post questions.  Other users can answer them.
