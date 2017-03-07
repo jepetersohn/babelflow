@@ -7,7 +7,7 @@
 4.  Sam 
 
 ## Summary
-DBC project completed over 4 days. We were assigned to create a substantial Sinatra application from the ground up: a [StackOverflow](http://stackoverflow.com) clone, with a unique theme. Our group created Babelflow, in which users are encouraged to post thematically proper responses to questions/comments in a different language than the original post.
+DBC project completed over 4 days. We were assigned to create a Sinatra application from the ground up: a clone of the [StackOverflow](http://stackoverflow.com) functionality, with a unique theme. Our group created Babelflow, in which users are encouraged to post thematically proper responses to questions/comments in a different language than the original post. For example: A user may post a question in Spanish asking about fun places to visit in Chicago; responders are encouraged to reply to that question in any language <i>other than</i> Spanish. 
 
 ### Assignment Requirement per DBC
 - Users can post questions.  Other users can answer them.
@@ -16,6 +16,9 @@ DBC project completed over 4 days. We were assigned to create a substantial Sina
 - Users can upvote and downvote questions, answers, and comments—only one vote per user for each question, answer, and comment.
 - Users cannot add a question, answer, or comment or vote unless they're logged in, but they can view all of the above when logged out.
 
+Homepage, listing all questions:
 ![image](https://cloud.githubusercontent.com/assets/19498387/23675070/b6338b70-033d-11e7-8e24-5f56bd566a8f.png)
+
+Show page of individual question:
 ![image](https://cloud.githubusercontent.com/assets/19498387/23675080/bde7e91a-033d-11e7-999e-747a6a9274c3.png)
 
